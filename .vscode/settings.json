@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/8c5b1b46-22ee-4b29-ab2c-bd7d031b8bb1/AppServices/subscriptions/8c5b1b46-22ee-4b29-ab2c-bd7d031b8bb1/resourceGroups/BlogVines-Server/providers/Microsoft.Web/sites/BlogVines-Server",
+    "appService.deploySubpath": "."
+}
