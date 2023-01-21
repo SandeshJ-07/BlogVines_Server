@@ -10,7 +10,7 @@ dotenv.config();
 
 const app = express();
 
-const PORT = 5000;
+const PORT = 80;
 
 const username = process.env.DB_USERNAME;
 const password = process.env.DB_PASSWORD;
