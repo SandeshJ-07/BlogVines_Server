@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
     console.log("Ga");
-    return  res.send("<h1>Hello World</h1>");
+    return  res.json("Hello World");
 })
 
 export default router;
