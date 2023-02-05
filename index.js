@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import bodyParser from "body-parser";
 
 // To establish connection with databases
 import Connection from "./database/db.js";
@@ -18,5 +19,7 @@ const password = process.env.DB_PASSWORD;
 Connection(username,password);
 
 app.use(cors());
+app.use(bodyParser.json({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api', Routes);
 app.listen(PORT,()=> console.log(`Server is running on port : ${PORT}`));
