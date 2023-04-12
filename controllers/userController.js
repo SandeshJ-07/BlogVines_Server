@@ -1,15 +1,13 @@
 import User from "../models/userSchema.js";
-import axios from "axios";
-import Session from "../models/sessionSchema.js";
+// import Session from "../models/sessionSchema.js";
 import passwordHash from "password-hash";
-import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 
 dotenv.config();
 
-const url = process.env.URL;
-
 // Params : email/username/contact
+// Returns : sessionId
+// This function logs in the user and creates a session
 export const userLogin = async (request, response) => {
   try {
     var user = await User.findOne({
@@ -41,6 +39,8 @@ export const userLogin = async (request, response) => {
 };
 
 // Params : firstname, lastname, username, email, password
+// Returns : sessionId
+// This function registers the user and creates a session
 export const userRegister = async (request, response) => {
   try {
     var user = await User.findOne({
@@ -73,6 +73,8 @@ export const userRegister = async (request, response) => {
 };
 
 // Params : email, contact, username
+// Returns : true/false
+// This function verifies if the user details are already present in the database
 export const verifyUserDetails = async (request, response) => {
   try {
     let user1 = await User.findOne({ email: request.body.email });

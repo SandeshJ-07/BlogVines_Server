@@ -5,12 +5,13 @@ dotenv.config();
 
 const app_password = process.env.GMAIL_PASSWORD;
 
+// This function sends the otp to the user email while signing up
 export const sendOTP = async (req, res) => {
   try {
 
     // Generate 6 digit OTP
     const otp = Math.floor(100000 + Math.random() * 900000);
-
+    
     // Create html for OTP
     let html = `<div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
     <div style="margin:50px auto;width:70%;padding:20px 0">
