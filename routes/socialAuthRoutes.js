@@ -30,12 +30,12 @@ router.get(
       email: req.user.email,
     });
     const url1 = url.format({
-      pathname: `${CLIENT_URL}/social/login`,
+      pathname: `https://${CLIENT_URL}/social/login`,
       query: {
         sessionId: response.data.sessionId,
       },
     });
-    res.redirect("http://" + url1);
+    res.redirect(url1);
   }
 );
 

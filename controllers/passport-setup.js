@@ -58,7 +58,7 @@ passport.use(
             isReader: true,
             isWriter: false,
             isAdmin: false,
-            password: passwordHash.generate(password)
+            password: passwordHash.generate(password),
           });
           await user.save();
           done(null, profile);
