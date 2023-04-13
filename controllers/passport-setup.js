@@ -1,11 +1,12 @@
 import passport from "passport";
 import dotenv from "dotenv";
 import User from "../models/userSchema.js";
-import Session from "../models/sessionSchema.js";
+import Session from "../models/LoginSessionSchema.js";
 import passwordHash from "password-hash";
 
 dotenv.config();
 
+const SERVER_URL = process.env.SERVER_URL;
 // Setting up Google Authentication
 import GoogleStrategy from "passport-google-oauth2";
 
@@ -25,7 +26,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "http://localhost:80/social/auth/google/callback",
+      callbackURL: `${SERVER_URL}/social/auth/google/callback`,
       passReqToCallback: true,
     },
     (request, accessToken, refreshToken, profile, done) => {

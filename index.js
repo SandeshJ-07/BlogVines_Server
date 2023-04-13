@@ -4,7 +4,6 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import passport from "passport";
 import cookieSession from "cookie-session";
-import session from "express-session";
 
 // To establish connection with databases
 import Connection from "./database/db.js";
@@ -30,7 +29,6 @@ app.use(cookieSession({
 app.use(cors());
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(session({secret_key:"BlogVines Asper", resave : true, saveUninitialized: true}));
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api', Routes);
