@@ -29,8 +29,9 @@ router.get(
     let response = await axios.post(`${SERVER_URL}/social/auth/createSession`, {
       email: req.user.email,
     });
+    let link = String(CLIENT_URL).includes("localhost")?`${CLIENT_URL}/social/login`:`https://${CLIENT_URL}/social/login`;
     const url1 = url.format({
-      pathname: `https://${CLIENT_URL}/social/login`,
+      pathname: link,
       query: {
         sessionId: response.data.sessionId,
       },
