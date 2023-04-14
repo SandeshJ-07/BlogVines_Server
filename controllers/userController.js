@@ -5,6 +5,9 @@ import dotenv from "dotenv";
 import { uuid } from "uuidv4";
 import axios from "axios";
 
+import sign from "jsonwebtoken/sign.js";
+import verify from "jsonwebtoken/verify.js";
+
 dotenv.config();
 
 const SERVER_URL = process.env.SERVER_URL;
@@ -31,9 +34,28 @@ export const userLogin = async (request, response) => {
         )),
       ];
     if (user && correctuser) {
+
+      let access = "r";
+        if(user.isWriter)  access += "w";
+        if(user.isAdmin) access += "a";
+        
+      // Create User Token
+      const token = sign({
+        user_id : user._id,
+        email : user.email,
+        access : access
+      },
+      process.env.JWT_TOKEN,
+      {
+        expiresIn : "2h"
+      }
+      );
+      user.token = token;
+      await user.save();
+
       return response
         .status(200)
-        .json({ sessionId: null, username: user.username, success: 1 });
+        .json({ token : token, username: user.username, success: 1 });
     } else {
       return response.json({ message: "Invalid Credentials", success: 0 });
     }
