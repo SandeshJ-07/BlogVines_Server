@@ -73,12 +73,12 @@ export const sendPasswordResetLink = async (req, res) => {
     
       <p>To reset your password, click the button below:</p>
     
-      <a href="${link}" style="color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 5px; display: inline-block; margin-bottom: 20px;">Reset Password</a>
+      <a href="https://${link}" style="text-decoration: none; padding: 10px 20px; border-radius: 5px; display: inline-block; margin-bottom: 20px;">Reset Password</a>
     
       <p>If the button above doesn't work, you can also reset your password by copying and pasting the following URL into your browser:</p>
 
     
-      <p style="margin-bottom: 20px;">${link}</p>
+      <p style="margin-bottom: 20px;">https://${link}</p>
 
     
       <p>Thanks,</p>

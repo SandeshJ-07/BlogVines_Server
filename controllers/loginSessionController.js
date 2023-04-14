@@ -4,10 +4,10 @@ import { uuid } from "uuidv4";
 
 // Generate a new login session for the user authenticated from Google
 export const generateUserLoginSession = async (request, response) => {
+  let user = await User.findOne({
+    email: request.body.email,
+  });
   try {
-    let user = await User.findOne({
-      email: request.body.email,
-    });
     if (user) {
       await LoginSession.deleteMany({ email: request.body.email });
       let session = new LoginSession({
